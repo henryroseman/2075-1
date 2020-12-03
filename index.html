@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>CodePen - 2075-1</title>
+  
+  
+  
+  
+<style>
+body  {
+  background:aqua;
+  font-size:200%;
+  line-height:59px;
+  text-align:center;
+}
+
+#timer {
+  font-size: 50px;
+  border-style:solid;
+  border-color:green;
+  border-radius:15px;
+  padding:5px;
+}
+
+#start {
+  font-size: 70%;
+  color: green;
+}
+#pause {
+  font-size: 70%;
+  color: red;
+}
+#reset {
+  font-size: 70%;
+  color: maroon;
+}
+</style>
+
+  
+  
+  
+  
+
+</head>
+
+<body translate="no" >
+  <h1>Day 1 Timer</h1>
+<button onclick=startTimer() id="start">Start Timer</button>
+<button onclick=pauseTimer() id="pause">Pause Timer</button>
+<div>Timer:</div>
+<b1 id="timer"><span id="min">0</span><span id="min1">m </span><span id="sec">0</span>s</b1>
+<div><button onclick=resetTimer() id="reset">Reset Timer</button></div>
+  
+  
+      <script id="rendered-js" >
+console.clear();
+console.log("hello world");
+let started = 0;
+let timer = 0;
+let min = 0;
+let x = document.getElementById("min1");
+x.style.display = "none";
+let element2 = document.getElementById("min");
+element2.style.display = "none";
+let element = document.getElementById("sec");
+let pause = 0;
+let dummySec = 0;
+let dummyMin = 0;
+document.getElementById("timer").style.borderColor = "red";
+
+
+function minSec(){
+  if (started==1){
+  timer++
+  if (pause==0) {
+  element.innerHTML = timer;
+  }
+  if (timer==60){
+    timer = 0
+    min++
+if (pause==0){
+   element2.style.display = "inline";
+    x.style.display = "inline";
+   element2.innerHTML = min;
+   element.innerHTML = timer;
+}
+  }
+  }
+}
+
+function startTimer(){
+  document.getElementById("timer").style.borderColor = "green";
+    if (started==0){
+      pause=0;
+  setInterval(minSec,1000);
+started=1;  
+  }
+  if (started==1){
+      pause = 0;
+      timer = dummySec;
+      min = dummyMin;
+  }
+}
+
+function pauseTimer(){
+  dummySec = timer;
+  dummyMin = min;
+  pause = 1;
+  document.getElementById("timer").style.borderColor = "red";
+};
+
+function resetTimer(){
+  started=1;
+  timer=0;
+  min=0;
+  x.style.display = "none";
+  element2.style.display = "none";
+  pause=1;
+  dummySec=0;
+  dummyMin=0;
+  document.getElementById("timer").style.borderColor = "red";
+  element.innerHTML = timer;
+}
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
